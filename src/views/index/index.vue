@@ -28,19 +28,21 @@
         <div>
             <el-row :gutter="25">
                 <el-col v-for="movie in recommendations.highScoreRecommendations" :key="movie.mid" :span="4">
-                    <div class="movie-display">
-                        <div class="movie-poster">
-                            <img :src="movie.poster">
+                    <router-link class="router-link" :to="{ path: '/movie', query: { mid: movie.mid } }">
+                        <div class="movie-display">
+                            <div class="movie-poster">
+                                <img :src="movie.poster">
+                            </div>
+                            <div class="movie-detail">
+                                <el-tooltip placement="bottom">
+                                    <template #content>
+                                        {{ movie.name }}
+                                    </template>
+                                    <div class="movie-name">{{ movie.name }}</div>
+                                </el-tooltip>
+                            </div>
                         </div>
-                        <div class="movie-detail">
-                            <el-tooltip placement="bottom">
-                                <template #content>
-                                    {{ movie.name }}
-                                </template>
-                                <div class="movie-name">{{ movie.name }}</div>
-                            </el-tooltip>
-                        </div>
-                    </div>
+                    </router-link>
                 </el-col>
             </el-row>
         </div>
@@ -50,19 +52,21 @@
         <div>
             <el-row :gutter="25">
                 <el-col v-for="movie in recommendations.offlineRecommendations" :key="movie.mid" :span="4">
-                    <div class="movie-display">
-                        <div class="movie-poster">
-                            <img :src="movie.poster">
+                    <router-link class="router-link" :to="{ path: '/movie', query: { mid: movie.mid } }">
+                        <div class="movie-display">
+                            <div class="movie-poster">
+                                <img :src="movie.poster">
+                            </div>
+                            <div class="movie-detail">
+                                <el-tooltip placement="bottom">
+                                    <template #content>
+                                        {{ movie.name }}
+                                    </template>
+                                    <div class="movie-name">{{ movie.name }}</div>
+                                </el-tooltip>
+                            </div>
                         </div>
-                        <div class="movie-detail">
-                            <el-tooltip placement="bottom">
-                                <template #content>
-                                    {{ movie.name }}
-                                </template>
-                                <div class="movie-name">{{ movie.name }}</div>
-                            </el-tooltip>
-                        </div>
-                    </div>
+                    </router-link>
                 </el-col>
             </el-row>
         </div>
