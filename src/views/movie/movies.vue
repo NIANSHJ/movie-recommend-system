@@ -28,11 +28,11 @@
                 </el-icon>
             </li>
             <li>
-                <el-link :underline="false" @click="sortByAvg">评分</el-link>
-                <el-icon v-if="movieDto.avg === -1">
+                <el-link :underline="false" @click="sortByScore">评分</el-link>
+                <el-icon v-if="movieDto.score === -1">
                     <Bottom />
                 </el-icon>
-                <el-icon v-if="movieDto.avg === 1">
+                <el-icon v-if="movieDto.score === 1">
                     <Top />
                 </el-icon>
             </li>
@@ -85,25 +85,25 @@ const genreChange = (index) => {
 // 根据时间排序
 const sortByIssue = () => {
     movieDto.value.issue === -1 ? movieDto.value.issue = 1 : movieDto.value.issue = -1
-    movieDto.value.avg = movieDto.value.hot = 0
+    movieDto.value.score = movieDto.value.hot = 0
     getMovies()
 }
 // 根据人气排序
 const sortByHot = () => {
     movieDto.value.hot === -1 ? movieDto.value.hot = 1 : movieDto.value.hot = -1
-    movieDto.value.avg = movieDto.value.issue = 0
+    movieDto.value.score = movieDto.value.issue = 0
     getMovies()
 }
 // 根据评分排序
-const sortByAvg = () => {
-    movieDto.value.avg === -1 ? movieDto.value.avg = 1 : movieDto.value.avg = -1
+const sortByScore = () => {
+    movieDto.value.score === -1 ? movieDto.value.score = 1 : movieDto.value.score = -1
     movieDto.value.hot = movieDto.value.issue = 0
     getMovies()
 }
 
-// 参数列表（issue发行时间，hot人气，avg平均评分，genre类型，page页数）
+// 参数列表（issue发行时间，hot人气，score评分，genre类型，page页数）
 const movieDto = ref({
-    issue: 0, hot: 0, avg: 0, genre: 'all', page: 1
+    issue: 0, hot: 0, score: 0, genre: 'all', page: 1
 })
 
 // 电影列表数据

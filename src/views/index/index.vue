@@ -111,8 +111,16 @@ const recommendations = ref({
 
 // 获取推荐列表
 const getRecommendation = async () => {
-    const { data: [hotRecommendations, highScoreRecommendations, offlineRecommendations] } = await recommendService.recommend()
-    // 获取电影海报图
+    const { data: { streamingRecommendations, offlineRecommendations, hotRecommendations, highScoreRecommendations } } = await recommendService.recommend()
+    // 设置电影数据和海报图
+    streamingRecommendations?.forEach(movie => {
+        movie.poster = `/images/${movie.mid}/poster.jpg`
+        recommendations.value.streamingRecommendations.push(movie)
+    })
+    offlineRecommendations?.forEach(movie => {
+        movie.poster = `/images/${movie.mid}/poster.jpg`
+        recommendations.value.offlineRecommendations.push(movie)
+    })
     hotRecommendations?.forEach(movie => {
         movie.poster = `/images/${movie.mid}/poster.jpg`
         recommendations.value.hotRecommendations.push(movie)
@@ -120,10 +128,6 @@ const getRecommendation = async () => {
     highScoreRecommendations?.forEach(movie => {
         movie.poster = `/images/${movie.mid}/poster.jpg`
         recommendations.value.highScoreRecommendations.push(movie)
-    })
-    offlineRecommendations?.forEach(movie => {
-        movie.poster = `/images/${movie.mid}/poster.jpg`
-        recommendations.value.offlineRecommendations.push(movie)
     })
 }
 

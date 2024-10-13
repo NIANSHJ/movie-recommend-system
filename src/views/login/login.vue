@@ -11,7 +11,7 @@
             </el-form-item>
             <el-form-item prop="password">
                 <el-input :prefix-icon="Lock" type="password" placeholder="请输入密码" v-model="loginDto.password"
-                    show-password clearable></el-input>
+                    show-password @keyup.enter="submitForm" clearable></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button class="login-button" auto-insert-space @click="submitForm">登录</el-button>

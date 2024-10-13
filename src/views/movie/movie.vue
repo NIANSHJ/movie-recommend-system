@@ -32,7 +32,8 @@
                 <span>导演:{{ movieDetail.directors }}</span>
             </div>
             <div class='description'>
-                <el-rate v-model="movieDetail.avg" disabled show-score text-color="#ff9900" score-template="{value}" />
+                <el-rate v-model="movieDetail.score" disabled show-score text-color="#ff9900"
+                    score-template="{value}" />
                 <div>共有{{ movieDetail.count }}人评分</div>
             </div>
             <div class='rate'>
@@ -59,16 +60,16 @@ const mid = route.query.mid
 // 电影列表数据
 const movieDetail = ref({
     name: '', description: '', duration: '', issue: '', shoot: '', language: '', genres: '',
-    actors: '', directors: '', count: 0, avg: 0, tag: ''
+    actors: '', directors: '', count: 0, score: 0, tag: ''
 })
 
 // 获取电影列表
 const getMovieDatail = async () => {
     const { data } = await movieService.movieDatail(mid)
     movieDetail.value = { ...data }
-    movieDetail.value.avg === null ? movieDetail.value.avg = 0 : movieDetail.value.avg
+    movieDetail.value.score === null ? movieDetail.value.score = 0 : movieDetail.value.score
     movieDetail.value.count === null ? movieDetail.value.count = 0 : movieDetail.value.count
-    movieDetail.value.avg = Number(movieDetail.value.avg.toFixed(1))
+    movieDetail.value.score = Number(movieDetail.value.score.toFixed(1))
     movieDetail.value.post = `/images/${mid}/poster.jpg`
 }
 

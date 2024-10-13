@@ -15,7 +15,7 @@
             </el-form-item>
             <el-form-item prop='repassword'>
                 <el-input :prefix-icon='Lock' type='password' placeholder='请输入确认密码' v-model='registerDto.repassword'
-                    show-password clearable></el-input>
+                    show-password @keyup.enter="submitForm" clearable></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button class="login-button" auto-insert-space @click="submitForm()">注册</el-button>

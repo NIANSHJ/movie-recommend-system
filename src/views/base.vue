@@ -32,7 +32,7 @@
             <el-form ref='searchFormRef' :model="searchData" :rules='rules' @submit.prevent>
                 <el-form-item prop='keywords'>
                     <el-input v-model="searchData.keywords" :prefix-icon="Search" size="large"
-                        @keyup.enter.native="searchMovies" clearable />
+                        @keyup.enter="searchMovies" clearable />
                 </el-form-item>
             </el-form>
         </el-dialog>
